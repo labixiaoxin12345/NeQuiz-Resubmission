@@ -1,7 +1,7 @@
 //selecting all required elements
 const start_btn = document.querySelector(".start_btn button");
 const info_box = document.querySelector(".info_box");
-const exit_btn = info_box.querySelector(".buttons .quit");
+const exit_btn = info_box.querySelector(".buttons .exit");
 const continue_btn = info_box.querySelector(".buttons .restart");
 const quiz_box = document.querySelector(".quiz_box");
 const result_box = document.querySelector(".result_box");
@@ -9,6 +9,7 @@ const option_list = document.querySelector(".option_list");
 const time_line = document.querySelector("header .time_line");
 const timeText = document.querySelector(".timer .time_left_txt");
 const timeCount = document.querySelector(".timer .timer_sec");
+const display_img = document.querySelector(".display_img")
 // if startQuiz button clicked
 start_btn.onclick = ()=>{
     info_box.classList.add("activeInfo"); //show info box
@@ -23,10 +24,10 @@ continue_btn.onclick = ()=>{
     quiz_box.classList.add("activeQuiz"); //show quiz box
     showQuetions(0); //calling showQestions function
     queCounter(1); //passing 1 parameter to queCounter
-    startTimer(15); //calling startTimer function
+    startTimer(20); //calling startTimer function
     startTimerLine(0); //calling startTimerLine function
 }
-let timeValue =  15;
+let timeValue =  20;
 let que_count = 0;
 let que_numb = 1;
 let userScore = 0;
@@ -34,12 +35,12 @@ let counter;
 let counterLine;
 let widthValue = 0;
 const restart_quiz = result_box.querySelector(".buttons .restart");
-const quit_quiz = result_box.querySelector(".buttons .quit");
+const exit_quiz = result_box.querySelector(".buttons .exit");
 // if restartQuiz button clicked
 restart_quiz.onclick = ()=>{
     quiz_box.classList.add("activeQuiz"); //show quiz box
     result_box.classList.remove("activeResult"); //hide result box
-    timeValue = 15; 
+    timeValue = 20; 
     que_count = 0;
     que_numb = 1;
     userScore = 0;
@@ -53,8 +54,8 @@ restart_quiz.onclick = ()=>{
     timeText.textContent = "Time Left"; //change the text of timeText to Time Left
     next_btn.classList.remove("show"); //hide the next button
 }
-// if quitQuiz button clicked
-quit_quiz.onclick = ()=>{
+// if exit_Quiz button clicked
+exit_quiz.onclick = ()=>{
     window.location.reload(); //reload the current window
 }
 const next_btn = document.querySelector("footer .next_btn");
@@ -82,6 +83,7 @@ next_btn.onclick = ()=>{
 function showQuetions(index){
     const que_text = document.querySelector(".que_text");
     //creating a new span and div tag for question and option and passing the value using array index
+    let display_tag = questions[index].img_url[index];
     let que_tag = '<span>'+ questions[index].numb + ". " + questions[index].question +'</span>';
     let option_tag = '<div class="option"><span>'+ questions[index].options[0] +'</span></div>'
     + '<div class="option"><span>'+ questions[index].options[1] +'</span></div>'
@@ -89,6 +91,7 @@ function showQuetions(index){
     + '<div class="option"><span>'+ questions[index].options[3] +'</span></div>';
     que_text.innerHTML = que_tag; //adding new span tag inside que_tag
     option_list.innerHTML = option_tag; //adding new div tag inside option_tag
+    display_img.innerHTML = display_tag; //add img 
     
     const option = option_list.querySelectorAll(".option");
     // set onclick attribute to all available options
@@ -113,6 +116,7 @@ function optionSelected(answer){
         answer.insertAdjacentHTML("beforeend", tickIconTag); //adding tick icon to correct selected option
         console.log("Correct Answer");
         console.log("Your correct answers = " + userScore);
+        
     }else{
         answer.classList.add("incorrect"); //adding red color to correct selected option
         answer.insertAdjacentHTML("beforeend", crossIconTag); //adding cross icon to correct selected option
@@ -138,15 +142,15 @@ function showResult(){
     if (userScore > 3){ // if user scored more than 3
         //creating a new span tag and passing the user score number and total question number
         let scoreTag = '<span>and congrats! , You got <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
-        scoreText.innerHTML = scoreTag + `questions correct`;  //adding new span tag inside score_Text
+        scoreText.innerHTML = scoreTag;  //adding new span tag inside score_Text
     }
     else if(userScore > 1){ // if user scored more than 1
         let scoreTag = '<span>and nice , You got <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
-        scoreText.innerHTML = scoreTag + `questions correct`;
+        scoreText.innerHTML = scoreTag;
     }
     else{ // if user scored less than 1
         let scoreTag = '<span>and sorry , You got only <p>'+ userScore +'</p> out of <p>'+ questions.length +'</p></span>';
-        scoreText.innerHTML = scoreTag + `questions correct`;
+        scoreText.innerHTML = scoreTag;
     }
 }
 function startTimer(time){
@@ -178,7 +182,7 @@ function startTimer(time){
     }
 }
 function startTimerLine(time){
-    counterLine = setInterval(timer, 29);
+    counterLine = setInterval(timer, 37);
     function timer(){
         time += 1; //upgrading time value with 1
         time_line.style.width = time + "px"; //increasing width of time_line with px by time value

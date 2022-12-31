@@ -10,7 +10,8 @@ let questions = [
       'b. Ong Pang Boon',
       'c. Toh Chin Chye',
       'd. Sinnathamby Rajaratnam'
-    ]
+    ],
+    img_url: "./photos/Goh_Keng_Swee.jpg"
   },
     {
     numb: 2,
@@ -21,7 +22,8 @@ let questions = [
       'b. Goh Keng Swee',
       'c. Ong Pang Boon',          //correct answer
       'd. Toh Chin Chye'
-    ]
+    ],
+    img_url: "./photos/Ong_Pang_Boon.jpg"
   },
     {
     numb: 3,
@@ -33,7 +35,8 @@ let questions = [
       'c. Toh Chin Chye',
       'd. Yusof Ishak'
 
-    ]
+    ],
+    img_url: "./photos/Sinnathamby_Rajaratnam.jpg"
   },
     {
     numb: 4,
@@ -44,7 +47,8 @@ let questions = [
       'b. Goh Keng Swee',      
       'c. Toh Chin Chye',        //correct answer
       'd. Ong Pang Boon'
-    ]
+    ],
+    img_url: "./photos/Toh_Chin_Chye.jpg"
   },
     {
     numb: 5,
@@ -55,7 +59,8 @@ let questions = [
       'b. Toh Chin Chye',      
       'c. Goh Keng Swee',
       'd. Tony Tan Keng Yam'
-    ]
+    ],
+    img_url: "./photos/Ahmad_Ibrahim.jpg"
   },
     {
     numb: 6,
@@ -66,6 +71,7 @@ let questions = [
       "b. Tony Tan Keng Yam",
       "c. Goh Keng Swee",
       "d. Lee Kuan Yew"       //correct answer
-    ]
+    ],
+    img_url: "./photos/Lee Kuan Yew.jpeg"
   },
 ];
